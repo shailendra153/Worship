@@ -11,7 +11,7 @@ const itemSchema = new mongoose.Schema({
         required: true,
         min: 1
     },
-    itemImageurl: {
+    itemImageUrl: {
         type: String,
         required: true,
 
