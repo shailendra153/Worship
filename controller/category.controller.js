@@ -2,7 +2,7 @@ const Category = require('../model/category.model');
 exports.saveCategory = (request, response, next) => {
     const category = new Category();
     category.categoryName = request.categoryName;
-    category, categoryImageUrl = request.file.filename;
+    category, categoryImageUrl = "http://localhost:3000/images/" + request.file.filename;
     category.save()
         .then(result => {
             return response.status(201).json(result);
@@ -31,7 +31,7 @@ exports.updateCategory = (request, response, next) => {
     const categoryName = request.body.categoryName;
     let imageUrl = request.body.oldImageUrl;
     if (request.file)
-        imageUrl = request.file.filename;
+        imageUrl = "http://localhost:3000/images/" + request.file.filename;
     id = request.body.categoryId;
     Category.updateOne({ _id: id }, {
             $set: {

@@ -9,7 +9,7 @@ exports.addItem = (request, response, next) => {
     item.itemQty = request.body.itemQty;
     item.itemDiscount = request.body.itemDiscount;
     item.categoryId = request.body.categoryId;
-    item.itemImageurl = request.file.filename;
+    item.itemImageUrl = "http://localhost:3000/images/" + request.file.filename;
     item.save()
         .then(result => {
             return response.status(201).json(result);
@@ -36,7 +36,7 @@ exports.deleteItem = (request, response, next) => {
 exports.updateItem = (request, response, next) => {
     let imageUrl = request.body.oldImageurl;
     if (request.file)
-        imageUrl = request.file.filename;
+        imageUrl = "http://localhost:3000/images/" + request.file.filename;
     const itemName = request.body.itemName;
     const itemPrice = request.body.itemPrice;
     const itemUses = request.body.itemUses;
@@ -48,11 +48,13 @@ exports.updateItem = (request, response, next) => {
             $set: {
                 itemName: itemName,
                 itemPrice: itemPrice,
+                itemImageUrl: imageUrl,
                 itemUses: itemUses,
                 itemDescription: itemDescription,
                 itemQty: itemQty,
                 itemDiscount: itemDiscount,
-                categoryId: categoryId
+                categoryId: categoryId,
+
 
             }
         })
