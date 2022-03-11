@@ -1,19 +1,28 @@
 {
-    "name": "assiapi",
-    "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.19.2",
-        "express": "^4.17.3",
-        "express-validator": "^6.14.0",
-        "mongoose": "^6.2.5",
-        "multer": "^1.4.4"
-    }
+  "name": "assiapi",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.2.5",
+    "multer": "^1.4.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shailendra153/Worship.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shailendra153/Worship/issues"
+  },
+  "homepage": "https://github.com/shailendra153/Worship#readme",
+  "description": ""
 }
