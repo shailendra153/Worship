@@ -1,8 +1,15 @@
 const Category = require('../model/category.model');
+const { validationResult } = require('express-validator');
 exports.saveCategory = (request, response, next) => {
+    console.log(request.body)
+    console.log(request.file.filename)
+    const errors = validationResult(request);
+    if (!errors.isEmpty())
+        return response.status(400).json({ errors: errors.array() });
+    console.log("near Saving")
     const category = new Category();
-    category.categoryName = request.categoryName;
-    category, categoryImageUrl = "http://localhost:3000/images/" + request.file.filename;
+    category.categoryName = request.body.categoryName;
+    category.categoryImageUrl = "http://localhost:3000/images/" + request.file.filename;
     category.save()
         .then(result => {
             return response.status(201).json(result);
@@ -28,6 +35,10 @@ exports.deleteCategory = (request, response, next) => {
         });
 };
 exports.updateCategory = (request, response, next) => {
+
+    const errors = validationResult(request);
+    if (!errors.isEmpty())
+        return response.status(400).json({ errors: errors.array() });
     const categoryName = request.body.categoryName;
     let imageUrl = request.body.oldImageUrl;
     if (request.file)
