@@ -1,6 +1,10 @@
 const Item = require('../model/item.model');
+const { validationResult } = require('express-validator');
 
 exports.addItem = (request, response, next) => {
+    const errors = validationResult(request);
+    if (!errors.isEmpty())
+        return response.status(400).json({ errors: errors.array() });
     const item = new Item();
     item.itemName = request.body.itemName;
     item.itemPrice = request.body.itemPrice;
@@ -34,6 +38,9 @@ exports.deleteItem = (request, response, next) => {
         });
 };
 exports.updateItem = (request, response, next) => {
+    const errors = validationResult(request);
+    if (!errors.isEmpty())
+        return response.status(400).json({ errors: errors.array() });
     let imageUrl = request.body.oldImageurl;
     if (request.file)
         imageUrl = "http://localhost:3000/images/" + request.file.filename;
@@ -71,7 +78,7 @@ exports.updateItem = (request, response, next) => {
 
 };
 exports.viewItem = (request, response, next) => {
-    Item.find()
+    Item.find().populate('categoryId')
         .then(result => {
             return response.status(200).json(result);
         })

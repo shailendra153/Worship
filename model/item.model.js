@@ -17,7 +17,7 @@ const itemSchema = new mongoose.Schema({
 
     },
     itemUses: {
-        type: Number,
+        type: String,
         required: true
     },
     itemDescription: {
