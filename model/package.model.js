@@ -1,13 +1,13 @@
 const { strict } = require('is-typedarray');
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const { Schema } = mongoose;
 const packageSchema = new mongoose.Schema({
     packageName: {
         type: String,
         required: true
     },
     items: [{ type: Schema.Types.ObjectId, ref: 'items' }],
-    packageImageurl: {
+    packageImageUrl: {
         type: String,
         required: true
     },

@@ -88,3 +88,13 @@ exports.viewItem = (request, response, next) => {
         })
 
 };
+exports.itemByid=(request,response,next)=>{
+    Item.findOne({_id:request.params.itemId})
+    .then(result=>{
+        return response.status(200).json(result)
+    })
+    .catch(err=>{
+        console.log(err);
+        return response.status(500).json({message:"OOps!Something Went Wrong"});
+    });
+};
