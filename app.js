@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const categoryRouter = require('./router/category.router');
 const itemRouter = require('./router/item.router');
+const packageRouter=require('./router/package.router');
 
 const app = express();
 const mongoose = require('mongoose');
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/category", categoryRouter);
 app.use("/item", itemRouter);
+app.use("/package",packageRouter)
 
 
 
